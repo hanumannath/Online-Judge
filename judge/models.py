@@ -5,6 +5,8 @@ class problem(models.Model):
     name=models.TextField()
     statement = models.TextField()
     difficulty=models.TextField()
+    def __str__(self):
+        return self.name
 
 
 class solution(models.Model):
@@ -12,6 +14,9 @@ class solution(models.Model):
     verdict=models.TextField(null=True)
     time_of_submit = models.DateTimeField(auto_now=True)
     code=models.TextField(null=True, blank=True)
+    def __str__(self):
+        return self.curr_problem
+    
     
 
 class testcase(models.Model):

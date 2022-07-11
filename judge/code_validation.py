@@ -5,7 +5,8 @@ import subprocess
 
 
 def check_code(sub):
-    file=open(r'S:\study\online_judge\judge\Testcases\question1\out.cpp', 'w+')
+    file = open(r'C:\Users\hanuman\Documents\Online-Judge-using-django\judge\Testcases\question1\out.cpp', 'w +')
+    # file=open(r'S:\study\online_judge\judge\Testcases\question1\out.cpp', 'w+')
     file.write(sub.code)
     file.close()
     z=testcase.objects.get(curr_problem=sub.curr_problem)
@@ -14,7 +15,8 @@ def check_code(sub):
     input=input.split(',')
     output=output.split(',')
     n=len(input)
-    if(os.system('g++ S:\study\online_judge\judge\Testcases\question1\out.cpp')!=0):
+    if(os.system('g++ C:\Users\hanuman\Documents\Online-Judge-using-django\judge\Testcases\question1\out.cpp') != 0):
+    # if(os.system('g++ S:\study\online_judge\judge\Testcases\question1\out.cpp')!=0):
         verdict='Compilation Error'
         sub.verdict=verdict
         sub.save()
@@ -22,9 +24,10 @@ def check_code(sub):
     for i in range(n):
         testinput=input[i]
         testoutput=output[i]
-        z='a,out <' + str(testinput) + '> S:\study\online_judge\judge\Testcases\question1\output.txt'
+        z = 'a,out <' + str(testinput) + '> C:\Users\hanuman\Documents\Online-Judge-using-django\judge\Testcases\question1\output.txt'
         os.system(z)
-        out1='S:\study\online_judge\judge\Testcases\question1\output.txt'
+        out1 = 'C:\Users\hanuman\Documents\Online-Judge-using-django\judge\Testcases\question1\output.txt'
+        # out1='S:\study\online_judge\judge\Testcases\question1\output.txt'
         if(filecmp.cmp(out1,testoutput,shallow=False)):
             verdict='Accepted'
         else:

@@ -2,16 +2,14 @@ from .models import testcase
 import os, filecmp, sys, subprocess
 
 def check_code(submission):
-    with open("S:\study\online_judge\judge\Testcases\question1\sol.cpp", "w") as f:
+    with open(r"C:\Users\hanuman\Documents\Online-Judge-using-django\judge\Testcases\question1\sol.cpp", "w") as f:
+   
         f.write(submission.code)
     f.close()
-    if sys.platform == 'linux':
-        command =['g++ sol.cpp']
-    else:
-        path_to_code = r"S:\study\online_judge\judge\Testcases\question1"
-        command = 'g++ ' + os.path.join(path_to_code, 'sol.cpp')
+   
+    path_to_code = r"C:\Users\hanuman\Documents\Online-Judge-using-django\judge\Testcases\question1"
+    command = 'g++ ' + os.path.join(path_to_code, '\sol.cpp')
 
-    # Try code compilation
     try:
         subprocess.run(command, capture_output = True, check = True)
     except subprocess.CalledProcessError:
@@ -19,10 +17,8 @@ def check_code(submission):
         submission.verdict = "Compilation Error"
         submission.save()
         return
-    if sys.platform == 'linux':
-        command = ['./a.out']
-    else:
-        command = ['a.exe']
+    
+    command = ['a.exe']
     # Try code execution
     z=testcase.objects.get(curr_problem=submission.curr_problem)
     input=z.input
@@ -43,7 +39,8 @@ def check_code(submission):
             submission.save()
             return
         f.close()
-        out1="S:\study\online_judge\judge\Testcases\question1\output.txt"
+        out1=r"C:\Users\hanuman\Documents\Online-Judge-using-django\judge\Testcases\question1\output.txt"
+        # out1="S:\study\online_judge\judge\Testcases\question1\output.txt"
         with open(out1, "w") as f:
             f.write(output.stdout)
         f.close()
