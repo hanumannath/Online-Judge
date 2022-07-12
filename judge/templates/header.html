@@ -1,7 +1,3 @@
-
-
-{%include "header.html"%}
-
 {% load static %}
 <html lang="en">
   <head>
@@ -20,16 +16,43 @@
     <title>Compiler</title>
     <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}" />
     <style>
-     .table{
-        margin-top:30px;
-     }
-     .link{
-        color:black;
-        text-decoration:none;
-     }
+      .head1 {
+        margin-left: 5%;
+      }
+      .head2 {
+        margin-left: 5%;
+      }
+      .head3 {
+        margin-left: 30%;
+      }
     </style>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand head1" href="/problem/">I-Coder</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto head2">
+          <li class="nav-item">
+            <a class="nav-link" href="/problem/">Problems</a>
+          </li>
+          <li class="nav-item head3">
+            <a class="nav-link" href="/">Leaderboard</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -45,40 +68,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
-
-    <table class="table">
-  <thead>
-      <tr>
-        <th>No.</th>
-         <th></th>
-        <th>Problem Name</th>
-        <th>Difficulty</th>
-        <th></th>
-        <th></th>
-        
-    </tr>
-  </thead>
-  <tbody>
-   {% for data in probs %}
-    <tr> 
-        <td>{{ data.id }}</td>
-        <td></td>
-        <td ><a class="link" href="./{{data.id}}/">{{data.name}}</a></td>
-        <td>{{ data.difficulty }}</td>
-        <td></td>
-        <td></td>
-    </tr>
-    {% endfor %}
-   
-  </tbody>
-</table>
-    
-
   </body>
 </html>
-
-
-
-
-
-
