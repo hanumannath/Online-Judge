@@ -14,11 +14,17 @@ class solution(models.Model):
     verdict=models.TextField(null=True)
     time_of_submit = models.DateTimeField(auto_now=True)
     code=models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.curr_problem.name
      
 
 class testcase(models.Model):
     curr_problem=models.ForeignKey(problem, on_delete=models.CASCADE,null=True)
     input=models.TextField()
     output=models.TextField()
+    def __str__(self):
+        return self.curr_problem.name
+
     
  

@@ -44,6 +44,7 @@
     <table class="table">
   <thead>
       <tr>
+        <th>no></th>
         <th>Problem</th>
         <th>Verdict</th>
         <th>Code</th>
@@ -53,6 +54,7 @@
   <tbody>
    {% for item in qs %}
     <tr> 
+        <td>{{ forloop.counter }}</td>
         <td>{{ item.curr_problem.name }}</td>
         <td>{{ item.verdict }}</td>
         <td><a href="./code/{{item.id}}">code</a></td>

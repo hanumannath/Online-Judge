@@ -10,6 +10,12 @@ def display_problems(request):
         'probs': problem.objects.all()
     }
     return render (request, 'problem_page.html',context)
+def display_latest(request):
+    context={
+        #'probs': solution.objects.all()[1:6]
+        'probs': solution.objects.order_by('-time_of_submit').all()[0:10]
+    }
+    return render (request, 'leaderboard.html',context)
 
 
 def problem_detail(request, prob_id):
@@ -76,7 +82,7 @@ def del_prob(request, prob_id):
 
 def submit(request,prob_id):
     obj=problem.objects.get(id=prob_id)
-    qs=solution.objects.filter(curr_problem=obj)
+    qs = solution.objects.filter(curr_problem=obj).order_by('-time_of_submit')[1:10]
     if(len(qs)==0):
         template='no_submission.html'
         return render(request,template)

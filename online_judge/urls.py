@@ -22,7 +22,7 @@ from judge.views import (
     show_code,
     add_problem,
     add_testcase,
-    del_prob
+    del_prob, display_latest
 )
 
 urlpatterns = [
@@ -33,5 +33,6 @@ urlpatterns = [
     path('problem/<int:prob_id>/submission/code/<int:submission_id>/',show_code,name='show_past_code'),
     path('problem/add/', add_problem, name = 'add_problem'),
     path('problem/addtest/<int:prob_id>/', add_testcase, name = 'add_testcase'),
-    path('problem/delete/<int:prob_id>/', del_prob, name = 'delete_prob')
+    path('problem/delete/<int:prob_id>/', del_prob, name = 'delete_prob'),
+    path('Leaderboard/', display_latest,name='display_latest')
 ]

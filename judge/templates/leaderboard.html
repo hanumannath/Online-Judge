@@ -1,5 +1,4 @@
 
-
 {%include "header.html"%}
 
 {% load static %}
@@ -22,10 +21,6 @@
     <style>
      .table{
         margin-top:30px;
-     }
-     .link{
-        color:black;
-        text-decoration:none;
      }
     </style>
   </head>
@@ -50,24 +45,20 @@
   <thead>
       <tr>
         <th>No.</th>
-         <th></th>
-        <th>Problem Name</th>
-        <th>Difficulty</th>
-        <th></th>
-        <th></th>
-        
+        <th>Problem</th>
+        <th>Verdict</th>
+        <th>Code</th>
+        <th>Time</th>
     </tr>
   </thead>
   <tbody>
-    
-   {% for data in probs %}
+   {% for item in probs %}
     <tr> 
         <td>{{ forloop.counter }}</td>
-        <td></td>
-        <td ><a class="link" href="./{{data.id}}/">{{data.name}}</a></td>
-        <td>{{ data.difficulty }}</td>
-        <td></td>
-        <td></td>
+        <td>{{ item.curr_problem.name }}</td>
+        <td>{{ item.verdict }}</td>
+        <td><a href="./code/{{item.id}}">code</a></td>
+        <td>{{ item.time_of_submit }}</td>
     </tr>
     {% endfor %}
    
@@ -78,8 +69,22 @@
   </body>
 </html>
 
+<!--
+<div class="main">
 
-
+    <h2>{{ data.name }}</h2>
+    {{ data.statement }}<br/>
+    {{ data.difficulty }}<br/>
+    <a href="./submission/"><h3>My Submissions</h3></a>
+    <form action="/problem/{{data.id}}/" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Submit</button>
+    </form>
+    
+ 
+</div>
+-->
 
 
 
