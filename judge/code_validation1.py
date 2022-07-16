@@ -1,3 +1,4 @@
+import os
 from .models import testcase
 import os, filecmp, sys, subprocess
 
@@ -8,17 +9,15 @@ def check_code(submission):
     f.close()
    
     path_to_code = r"C:\Users\hanuman\Documents\Online-Judge-using-django\judge\Testcases\question1"
-    command = 'g++ ' + os.path.join(path_to_code, '\sol.cpp')
-
+    command1 = 'g++ ' + os.path.join(path_to_code, 'sol.cpp') 
     try:
-        subprocess.run(command, capture_output = True, check = True)
+        subprocess.run(command1, capture_output = True, check = True)
     except subprocess.CalledProcessError:
         print("CE")
         submission.verdict = "Compilation Error"
         submission.save()
         return
-    
-    command = ['a.exe']
+    command = ['a']
     # Try code execution
     z=testcase.objects.get(curr_problem=submission.curr_problem)
     input=z.input
@@ -26,7 +25,7 @@ def check_code(submission):
     input=input.split(',')
     output1=output.split(',')
     n=len(input)
-    for i in range(n):
+    for i in range(1):
         testinput=input[i]
         testoutput=output1[i]
         f = open(testinput, 'r')
@@ -44,7 +43,7 @@ def check_code(submission):
         with open(out1, "w") as f:
             f.write(output.stdout)
         f.close()
-
+     
          #Calculate the verdict and save it
         if(filecmp.cmp(out1,testoutput,shallow=False)):
             submission.verdict='Accepted'
@@ -52,6 +51,8 @@ def check_code(submission):
         else:
             submission.verdict='WA'
             submission.save()
-            return
+            return 
+    
+   
 
 
