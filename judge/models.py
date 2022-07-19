@@ -4,6 +4,7 @@ User = settings.AUTH_USER_MODEL
 class problem(models.Model):
     name=models.TextField()
     statement = models.TextField()
+    input_format=models.TextField(default=" ")
     difficulty=models.TextField()
     def __str__(self):
         return self.name

@@ -1,8 +1,13 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 int main(){
-
-while(1){
+int n,t;
+cin>>n;
+int arr[n];
+for(int i=0;i<n;i++){
+cin>>arr[i];
 }
-return ;
+cin>>t;
+cout<<"True";
+return 0;
 }
